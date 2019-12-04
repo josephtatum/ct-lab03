@@ -1,3 +1,5 @@
+const fs = require('fs').promises;
+
 const {
   mkdirp,
   writeJSON,
@@ -8,14 +10,18 @@ const {
 } = require('../lib/fs-functions.js');
 
 describe('fs function tests', () => {
-  beforeEach(
-    mkdirp('./testfolder')
-  );
+  beforeEach(() => {
+    mkdirp('./testfolder');
+  });
+
 
   it('should write a JSON object to a specified file', () => {
-    writeJSON('./testfolder/test.json', { name: 'test' })
-      .then(
-        expect()
-      );
+    return writeJSON('./testfolder/test.json', { name: 'test' })
+      .then(() => fs.readFile('./testfolder/test.json'))
+      .then(file => {
+        expect(JSON.parse(file)).toEqual({ name: 'test' });
+      });
   });
+
+  
 });
