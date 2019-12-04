@@ -8,13 +8,14 @@ const {
 } = require('../lib/fs-functions.js');
 
 describe('fs function tests', () => {
+  beforeEach(
+    mkdirp('./testfolder')
+  );
 
-  it('should make a directory (or a parent directory) in a specific file location', () => {
-    expect(mkdirp('./new')).toEqual('./new');
-    expect(mkdirp('./new/directory')).toEqual('./new/directory');
-  });
-
-  it('should throw an error if it fails', () => {
-    expect(() => mkdirp('//fail')).toThrowErrorMatchingInlineSnapshot();
+  it('should write a JSON object to a specified file', () => {
+    writeJSON('./testfolder/test.json', { name: 'test' })
+      .then(
+        expect()
+      );
   });
 });
