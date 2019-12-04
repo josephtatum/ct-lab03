@@ -13,4 +13,8 @@ describe('fs function tests', () => {
     expect(mkdirp('./new')).toEqual('./new');
     expect(mkdirp('./new/directory')).toEqual('./new/directory');
   });
+
+  it('should throw an error if it fails', () => {
+    expect(() => mkdirp('//fail')).toThrowErrorMatchingInlineSnapshot();
+  });
 });
