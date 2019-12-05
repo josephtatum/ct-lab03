@@ -29,4 +29,12 @@ describe('fs function tests', () => {
         expect(result).toEqual({ name: 'test' });
       });
   });
+
+  it('should read an object from a file', () => {
+    return readJSON('./testfolder/test.json')
+      .then(result => {
+        expect(result).toEqual({ name: 'test' });
+      });
+  });
+  
 });

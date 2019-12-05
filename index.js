@@ -1,7 +1,8 @@
 const {
   mkdirp,
   writeJSON,
-  readJSON
+  readJSON,
+  readDirectoryJSON
 } = require('./lib/fs-functions.js');
 
 mkdirp('./joseph');
@@ -12,4 +13,4 @@ writeJSON('./joseph/joseph.txt', {
   weight: '40 lbs'
 });
 
-readJSON('./joseph/joseph.txt');
+readDirectoryJSON('./joseph');
